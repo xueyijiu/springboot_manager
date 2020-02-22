@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haiyu.manager.dao.commentTableMapper">
+  <resultMap id="BaseResultMap" type="com.haiyu.manager.pojo.commentTable">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="post_id" jdbcType="BIGINT" property="postId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="reply_content" jdbcType="VARCHAR" property="replyContent" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="
+comment_superiors" jdbcType="VARCHAR" property="
+commentSuperiors" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, post_id, user_id, reply_content, time, 
+comment_superiors
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from comment_table
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from comment_table
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.haiyu.manager.pojo.commentTable">
+    insert into comment_table (id, post_id, user_id, 
+      reply_content, time, 
+comment_superiors
+      )
+    values (#{id,jdbcType=BIGINT}, #{postId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{replyContent,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, #{
+commentSuperiors,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.haiyu.manager.pojo.commentTable">
+    insert into comment_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="postId != null">
+        post_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="replyContent != null">
+        reply_content,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="
+commentSuperiors != null">
+        
+comment_superiors,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="postId != null">
+        #{postId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="replyContent != null">
+        #{replyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="
+commentSuperiors != null">
+        #{
+commentSuperiors,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.haiyu.manager.pojo.commentTable">
+    update comment_table
+    <set>
+      <if test="postId != null">
+        post_id = #{postId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="replyContent != null">
+        reply_content = #{replyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="
+commentSuperiors != null">
+        
+comment_superiors = #{
+commentSuperiors,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.haiyu.manager.pojo.commentTable">
+    update comment_table
+    set post_id = #{postId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      reply_content = #{replyContent,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP},
+      
+comment_superiors = #{
+commentSuperiors,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
