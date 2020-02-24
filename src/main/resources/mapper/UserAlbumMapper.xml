@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haiyu.manager.dao.UserAlbumMapper">
+  <resultMap id="BaseResultMap" type="com.haiyu.manager.pojo.UserAlbum">
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="album_pic" jdbcType="VARCHAR" property="albumPic" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="album_id" jdbcType="VARCHAR" property="albumId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.haiyu.manager.pojo.UserAlbum">
+    insert into user_album (user_id, album_pic, create_time, 
+      album_id)
+    values (#{userId,jdbcType=INTEGER}, #{albumPic,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{albumId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.haiyu.manager.pojo.UserAlbum">
+    insert into user_album
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="albumPic != null">
+        album_pic,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="albumId != null">
+        album_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="albumPic != null">
+        #{albumPic,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="albumId != null">
+        #{albumId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

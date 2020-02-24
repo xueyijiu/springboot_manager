@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haiyu.manager.dao.UserDynamicMapper">
+  <resultMap id="BaseResultMap" type="com.haiyu.manager.pojo.UserDynamic">
+    <id column="dynamic_id" jdbcType="VARCHAR" property="dynamicId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="dynamic_title" jdbcType="VARCHAR" property="dynamicTitle" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
+    <result column="dynamin_content" jdbcType="VARCHAR" property="dynaminContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    dynamic_id, user_id, dynamic_title, create_time, delete_status, dynamin_content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_dynamic
+    where dynamic_id = #{dynamicId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user_dynamic
+    where dynamic_id = #{dynamicId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.haiyu.manager.pojo.UserDynamic">
+    insert into user_dynamic (dynamic_id, user_id, dynamic_title, 
+      create_time, delete_status, dynamin_content
+      )
+    values (#{dynamicId,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{dynamicTitle,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{deleteStatus,jdbcType=INTEGER}, #{dynaminContent,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.haiyu.manager.pojo.UserDynamic">
+    insert into user_dynamic
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dynamicId != null">
+        dynamic_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="dynamicTitle != null">
+        dynamic_title,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="deleteStatus != null">
+        delete_status,
+      </if>
+      <if test="dynaminContent != null">
+        dynamin_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dynamicId != null">
+        #{dynamicId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="dynamicTitle != null">
+        #{dynamicTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteStatus != null">
+        #{deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dynaminContent != null">
+        #{dynaminContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.haiyu.manager.pojo.UserDynamic">
+    update user_dynamic
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="dynamicTitle != null">
+        dynamic_title = #{dynamicTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteStatus != null">
+        delete_status = #{deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="dynaminContent != null">
+        dynamin_content = #{dynaminContent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where dynamic_id = #{dynamicId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.haiyu.manager.pojo.UserDynamic">
+    update user_dynamic
+    set user_id = #{userId,jdbcType=INTEGER},
+      dynamic_title = #{dynamicTitle,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      delete_status = #{deleteStatus,jdbcType=INTEGER},
+      dynamin_content = #{dynaminContent,jdbcType=VARCHAR}
+    where dynamic_id = #{dynamicId,jdbcType=VARCHAR}
+  </update>
+</mapper>

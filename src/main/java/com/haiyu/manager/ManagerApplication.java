@@ -5,9 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-//@MapperScan(basePackages = "com.haiyu.manager.dao")
-@MapperScan("com.haiyu.manager.dao")
-//@MapperScan("com.haiyu.manager.dao")
+@MapperScan(basePackages = "com.haiyu.manager.dao")
 public class ManagerApplication {
 
 	public static void main(String[] args) {

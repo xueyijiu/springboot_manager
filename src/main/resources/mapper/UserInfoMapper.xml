@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haiyu.manager.dao.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.haiyu.manager.pojo.UserInfo">
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="pet_name" jdbcType="VARCHAR" property="petName" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="user_pic" jdbcType="VARCHAR" property="userPic" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="sex" jdbcType="CHAR" property="sex" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, phone, username, password, pet_name, address, user_pic, create_time, sex
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from userinfo
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from userinfo
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.haiyu.manager.pojo.UserInfo">
+    insert into userinfo (user_id, phone, username,
+      password, pet_name, address, 
+      user_pic, create_time, sex
+      )
+    values (#{userId,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR},
+      #{password,jdbcType=VARCHAR}, #{petName,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{userPic,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{sex,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.haiyu.manager.pojo.UserInfo">
+    insert into userinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="petName != null">
+        pet_name,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="userPic != null">
+        user_pic,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="petName != null">
+        #{petName,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="userPic != null">
+        #{userPic,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.haiyu.manager.pojo.UserInfo">
+    update userinfo
+    <set>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="petName != null">
+        pet_name = #{petName,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="userPic != null">
+        user_pic = #{userPic,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.haiyu.manager.pojo.UserInfo">
+    update userinfo
+    set phone = #{phone,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      pet_name = #{petName,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      user_pic = #{userPic,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      sex = #{sex,jdbcType=CHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>

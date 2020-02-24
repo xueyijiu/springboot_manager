@@ -1,4 +1,4 @@
 package com.haiyu.manager.service;
 
-public interface PostsTableService {
+public interface UserDynamicService {
 }

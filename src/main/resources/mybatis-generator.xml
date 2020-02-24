@@ -50,5 +50,53 @@
                enableSelectByExample="false"
                domainObjectName="postsTable"
                selectByExampleQueryId="false"/>
+
+        <table tableName="chat_record"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               domainObjectName="ChatRecord"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="comment"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               domainObjectName="Comment"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="friend_request"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               domainObjectName="FriendRequest"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="user_album"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               domainObjectName="UserAlbum"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="user_dynamic"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               domainObjectName="UserDynamic"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="userinfo"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               domainObjectName="UserInfo"
+               selectByExampleQueryId="false"/>
     </context>
 </generatorConfiguration>
